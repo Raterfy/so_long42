@@ -6,38 +6,26 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:32:18 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/11 13:07:18 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/14 17:29:35 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	is_ber_file(char *argv)
-{
-	int	i;
-
-	i = 0;
-	while (argv[i])
-		i++;
-	if (i < 4)
-		return (0);
-	if (argv[i - 4] == '.' && argv[i - 3] == 'b' && argv[i - 2] == 'e' && argv[i
-		- 1] == 'r')
-		return (1);
-	return (0);
-}
 
 static bool	is_map_rectangular(t_data *data)
 {
 	int	y;
 	int	len;
 
-	len = ft_strlen(data->map[0]);
+	len = get_line_len(data->map[0]);
 	y = 0;
 	while (data->map[y])
 	{
-		if (ft_strlen(data->map[y]) != len)
+		if (get_line_len(data->map[y]) != len)
+		{
+			write(2, "Error: The map is not rectangular\n", 34);
 			return (false);
+		}
 		y++;
 	}
 	return (true);
@@ -56,7 +44,10 @@ static bool	is_map_closed(t_data *data)
 		{
 			if ((y == 0 || y == data->height - 1 || x == 0 || x == data->width
 					- 1) && data->map[y][x] != '1')
+			{
+				write(2, "Error: The map is not closed\n", 29);
 				return (false);
+			}
 			x++;
 		}
 		y++;
@@ -64,70 +55,91 @@ static bool	is_map_closed(t_data *data)
 	return (true);
 }
 
-static int	count_elements(t_data *data, char c)
+int	wall_error(t_data *data, int len)
 {
-	int	count;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->map[i][j])
+	{
+		if (data->map[i][j++] != '1')
+			return (0);
+	}
+	i++;
+	while (data->map[i])
+	{
+		if (data->map[i][0] != '1' || data->map[i][len] != '1')
+			return (0);
+		i++;
+	}
+	j = 0;
+	while (data->map[i - 1][j])
+	{
+		if (data->map[i - 1][j++] != '1')
+			return (0);
+	}
+	return (1);
+}
+
+int	check_forbidden_characters(t_data *data)
+{
 	int	x;
 	int	y;
 
-	count = 0;
-	y = -1;
-	while (data->map[++y])
+	y = 0;
+	while (data->map[y])
 	{
-		x = -1;
-		while (data->map[y][++x])
-			if (data->map[y][x] == c)
-				count++;
+		x = 0;
+		while (data->map[y][x])
+		{
+			if (data->map[y][x] != '1' && data->map[y][x] != '0'
+				&& data->map[y][x] != 'C' && data->map[y][x] != 'E'
+				&& data->map[y][x] != 'P')
+			{
+				write(2, "Error: Forbidden character in the map\n", 40);
+				return (0);
+			}
+			x++;
+		}
+		y++;
 	}
-	return (count);
+	return (1);
 }
 
 bool	check_element_counts(t_data *data)
 {
-	if (count_elements(data, 'E') != 1)
+	if (data->count_e != 1)
 	{
 		ft_printf("Error: The map should have exactly one exit.\n");
 		return (false);
 	}
-	if (count_elements(data, 'C') < 1)
+	if (data->count_c < 1)
 	{
 		ft_printf("Error: The map should have at least one collectible.\n");
 		return (false);
 	}
-	if (count_elements(data, 'P') != 1)
+	if (data->count_p != 1)
 	{
-		ft_printf("Error: The map should have exactly one starting position.\n");
+		ft_printf("Error: The map should have one starting position.\n");
 		return (false);
 	}
-	return (true);
-}
-
-bool	is_map_valid(t_data *data)
-{
-	if (!is_map_rectangular(data))
-	{
-		ft_printf("Error: The map is not rectangular.\n");
-		return (false);
-	}
-	if (!is_map_closed(data))
-	{
-		ft_printf("Error: The map is not closed.\n");
-		return (false);
-	}
-	if (!check_element_counts(data))
-		return (false);
 	return (true);
 }
 
 void	dfs(t_data *data, int y, int x)
 {
+	data->count_p = 0;
+	data->count_e = 0;
+	data->count_c = 0;
 	if (y < 0 || y >= data->height || x < 0 || x >= data->width
 		|| data->map[y][x] == '1')
 		return ;
 	if (data->map[y][x] == 'C')
-		data->count_C++;
+		data->count_c++;
 	if (data->map[y][x] == 'E')
-		data->count_E++;
+		data->count_e++;
 	data->map[y][x] = 'V';
 	dfs(data, y - 1, x);
 	dfs(data, y + 1, x);
@@ -135,15 +147,15 @@ void	dfs(t_data *data, int y, int x)
 	dfs(data, y, x + 1);
 }
 
-bool	is_path_valid(t_data *data)
+int	is_path_valid(t_data *data)
 {
 	int	y;
 	int	x;
 	int	total_collectibles;
 
 	y = 0;
-	data->count_C = 0;
-	data->count_E = 0;
+	data->count_c = 0;
+	data->count_e = 0;
 	total_collectibles = count_elements(data, 'C');
 	while (data->map[y])
 	{
@@ -153,12 +165,37 @@ bool	is_path_valid(t_data *data)
 			if (data->map[y][x] == 'P')
 			{
 				dfs(data, y, x);
-				return (data->count_C == total_collectibles
-					&& data->count_E == 1);
+				return (data->count_c == total_collectibles
+					&& data->count_e == 1);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (false);
+	return (0);
+}
+
+int	map_error(t_data *data)
+{
+	int	cpy;
+
+	// int	len;
+	// len = get_line_len(data->map[0]) - 1;
+	cpy = NULL;
+	if (!check_element_counts(data) || !check_forbidden_characters(data))
+		return (0);
+	if (!is_map_rectangular(data))
+		return (0);
+	if (!is_map_closed(data))
+		return (0);
+	cpy = map_cpy(data->map);
+	if (!cpy)
+		return (0);
+	if (!is_path_valid(data))
+	{
+		free_map(data);
+		free(cpy);
+		return (0);
+	}
+	return (1);
 }
