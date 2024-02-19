@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:32:18 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:29:35 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 14:18:39 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,9 +188,9 @@ int	map_error(t_data *data)
 		return (0);
 	if (!is_map_closed(data))
 		return (0);
-	cpy = map_cpy(data->map);
-	if (!cpy)
-		return (0);
+	// cpy = map_cpy(data->map);
+	// if (!cpy)
+	// 	return (0);
 	if (!is_path_valid(data))
 	{
 		free_map(data);

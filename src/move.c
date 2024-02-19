@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 09:18:26 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:34:26 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 14:59:03 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	move_w(int keycode, t_data *data)
 	{
 		if (!is_and_exit(data, data->player_y - 1, data->player_x))
 		{
+			data->player_y--;
+			check_item(data, data->player_y, data->player_x);
+			set_ground(data, data->player_y + 1, data->player_x);
 			data->count_moves++;
 			ft_printf("Moves: %d\n", data->count_moves);
 		}
@@ -31,6 +34,9 @@ void	move_s(int keycode, t_data *data)
 	{
 		if (!is_and_exit(data, data->player_y + 1, data->player_x))
 		{
+			data->player_y++;
+			check_item(data, data->player_y, data->player_x);
+			set_ground(data, data->player_y - 1, data->player_x);
 			data->count_moves++;
 			ft_printf("Moves: %d\n", data->count_moves);
 		}
@@ -43,6 +49,9 @@ void	move_a(int keycode, t_data *data)
 	{
 		if (!is_and_exit(data, data->player_y, data->player_x - 1))
 		{
+			data->player_x--;
+			check_item(data, data->player_y, data->player_x);
+			set_ground(data, data->player_y, data->player_x + 1);
 			data->count_moves++;
 			ft_printf("Moves: %d\n", data->count_moves);
 		}
@@ -55,6 +64,9 @@ void	move_d(int keycode, t_data *data)
 	{
 		if (!is_and_exit(data, data->player_y, data->player_x + 1))
 		{
+			data->player_x++;
+			check_item(data, data->player_y, data->player_x);
+			set_ground(data, data->player_y, data->player_x - 1);
 			data->count_moves++;
 			ft_printf("Moves: %d\n", data->count_moves);
 		}

@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:21:48 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:35:54 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 15:32:01 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,36 @@ int	is_ber_file(char *argv)
 		i++;
 	if (i < 4)
 		return (0);
-	if (argv[i - 4] == '.' && argv[i - 3] == 'b' && argv[i - 2] == 'e'
+	if (argv[i - 4] == '.' && argv[i - 3] == 'b' && argv[i - 2] == 'e' 
 		&& argv[i - 1] == 'r')
 		return (1);
 	return (0);
+}
+
+int	is_and_exit(t_data *data, int y, int x)
+{
+	if (data->map[y][x] == 'E')
+	{
+		if (data->get_c == data->count_c)
+		{
+			ft_printf("You won UwU!\n");
+			close_game(data);
+		}
+		else
+			return (1);
+	}
+	return (0);
+}
+
+void	check_item(t_data *data, int y, int x)
+{
+	if (data->map[y][x] == 'C')
+		data->get_c++;
+}
+
+void	set_ground(t_data *data, int y, int x)
+{
+	mlx_put_image_to_window(data->mlx, data->mlx_win,
+		data->ground, x * 50, y * 50);
+	data->map[data->player_y][data->player_x] = '0';
 }

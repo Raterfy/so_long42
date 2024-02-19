@@ -6,17 +6,27 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:30:49 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 15:46:22 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 13:53:14 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	main(int ac, char **av)
+int	open_file(const char *filename)
 {
-	int		fd;
-	t_data	data;
+	int	fd;
 
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putendl_fd("Error\nFile opening failed\n", 2);
+		return (-1);
+	}
+	return (fd);
+}
+
+int	validate_input(int ac, char **av)
+{
 	if (ac != 2)
 	{
 		ft_putendl_fd("Error\nInvalid number of arguments\n", 2);
@@ -27,12 +37,19 @@ int	main(int ac, char **av)
 		ft_putendl_fd("Error\nInvalid file extension\n", 2);
 		return (1);
 	}
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
-	{
-		ft_putendl_fd("Error\nFile opening failed\n", 2);
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	int		fd;
+	t_data	data;
+
+	if (validate_input(ac, av) == 1)
 		return (1);
-	}
+	fd = open_file(av[1]);
+	if (fd == -1)
+		return (1);
 	if (create_map(&data, fd) == 1)
 	{
 		ft_putendl_fd("Error\nMap parsing failed\n", 2);

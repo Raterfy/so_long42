@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:18:00 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:32:01 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 15:26:31 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,16 @@ void		dfs(t_data *data, int y, int x);
 int			is_path_valid(t_data *data);
 int			map_error(t_data *data);
 int			is_ber_file(char *argv);
+// Utils
+void		check_item(t_map *map, int y, int x);
+void		set_ground(t_data *data, int y, int x);
+
+// Moves
+int			keyhook(int keycode, t_data *data);
+void		move_w(int keycode, t_data *data);
+void		move_s(int keycode, t_data *data);
+void		move_a(int keycode, t_data *data);
+void		move_d(int keycode, t_data *data);
 
 char		**map_cpy(char **map);
 char		**create_map(int fd, t_data *data);

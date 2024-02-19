@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:31:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:33:59 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/18 15:02:01 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,47 +29,47 @@ void	init_img(t_data *data)
 			&img_height);
 }
 
-void	ft_set_item(t_map *map, t_pos pos)
+void	ft_set_item(t_data *data, t_pos pos)
 {
-	if (map->map_tab[pos.y][pos.x] == 'C')
+	if (data->map[pos.y][pos.x] == 'C')
 	{
 		if ((pos.y * pos.x) % 2 == 0)
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->berry, pos.x * 24, pos.y * 24);
+			mlx_put_image_to_window(data->mlx, data->mlx_win,
+				data->berry, pos.x * 50, pos.y * 50);
 		else
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->berry2, pos.x * 24, pos.y * 24);
+			mlx_put_image_to_window(data->mlx, data->mlx_win,
+				data->berry2, pos.x * 50, pos.y * 50);
 	}
-	else if (map->map_tab[pos.y][pos.x] == 'E')
-		mlx_put_image_to_window(map->mlx, map->mlx_win,
-			map->exit, pos.x * 24, pos.y * 24);
-	else if (map->map_tab[pos.y][pos.x] == 'P')
+	else if (data->map[pos.y][pos.x] == 'E')
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->exit, pos.x * 50, pos.y * 50);
+	else if (data->map[pos.y][pos.x] == 'P')
 	{
-		mlx_put_image_to_window(map->mlx, map->mlx_win,
-			map->char_right, pos.x * 24, pos.y * 24);
-		map->p_x = pos.x;
-		map->p_y = pos.y;
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+			data->char_right, pos.x * 50, pos.y * 50);
+		data->p_x = pos.x;
+		data->p_y = pos.y;
 	}
 }
 
-void	ft_set_img(t_map *map)
+void	ft_set_img(t_data *data)
 {
 	t_pos	pos;
 
 	pos.y = 0;
-	while (map->map_tab[pos.y])
+	while (data->map[pos.y])
 	{
 		pos.x = 0;
-		while (map->map_tab[pos.y][pos.x])
+		while (data->map[pos.y][pos.x])
 		{
-			if (map->map_tab[pos.y][pos.x] == '1')
-				mlx_put_image_to_window(map->mlx, map->mlx_win,
-					map->tree, pos.x * 24, pos.y * 24);
+			if (data->map[pos.y][pos.x] == '1')
+				mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->tree, pos.x * 50, pos.y * 50);
 			else
 			{
-				mlx_put_image_to_window(map->mlx, map->mlx_win,
-					map->ground, pos.x * 24, pos.y * 24);
-				ft_set_item(map, pos);
+				mlx_put_image_to_window(data->mlx, data->mlx_win,
+					data->ground, pos.x * 50, pos.y * 50);
+				ft_set_item(data, pos);
 			}
 			pos.x++;
 		}
