@@ -6,30 +6,30 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:26:43 by robhak            #+#    #+#             */
-/*   Updated: 2023/05/27 12:23:56 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:56:43 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
- * ft_putchar - Écrit un caractère sur la sortie standard.
+ * ft_putchar_printf - Écrit un caractère sur la sortie standard.
  * @c: Le caractère à écrire.
  *
  * Retourne: Le nombre de caractères écrits (toujours 1).
  */
-size_t	ft_putchar(char c)
+size_t	ft_putchar_printf(char c)
 {
 	return (write(1, &c, 1));
 }
 
 /*
- * ft_putstr - Écrit une chaîne de caractères sur la sortie standard.
+ * ft_putstr_printf - Écrit une chaîne de caractères sur la sortie standard.
  * @str: La chaîne de caractères à écrire.
  *
  * Retourne: Le nombre de caractères écrits.
  */
-size_t	ft_putstr(char *str)
+size_t	ft_putstr_printf(char *str)
 {
 	size_t	i;
 	int		cpt;
@@ -37,7 +37,7 @@ size_t	ft_putstr(char *str)
 	i = 0;
 	cpt = 0;
 	while (str[i])
-		cpt += ft_putchar(str[i++]);
+		cpt += ft_putchar_printf(str[i++]);
 	return (cpt);
 }
 
@@ -62,7 +62,7 @@ size_t	ft_putnbr(int n)
 	}
 	if (nbr && nbr > 9)
 		cpt += ft_putnbr(nbr / 10);
-	cpt += ft_putchar (nbr % 10 + '0');
+	cpt += ft_putchar_printf (nbr % 10 + '0');
 	return (cpt);
 }
 
@@ -79,7 +79,7 @@ size_t	ft_unsigned_nbr(unsigned long long int n)
 	cpt = 0;
 	if (n && n > 9)
 		cpt += ft_putnbr(n / 10);
-	cpt += ft_putchar (n % 10 + '0');
+	cpt += ft_putchar_printf (n % 10 + '0');
 	return (cpt);
 }
 
@@ -98,9 +98,9 @@ size_t	ft_putnbr_base(unsigned long long int n, char *base)
 	if (n >= 16)
 	{
 		cpt += ft_putnbr_base(n / 16, base);
-		cpt += ft_putchar(base[n % 16]);
+		cpt += ft_putchar_printf(base[n % 16]);
 	}
 	else
-		cpt += ft_putchar(base[n]);
+		cpt += ft_putchar_printf(base[n]);
 	return (cpt);
 }

@@ -6,14 +6,14 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 09:18:26 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/18 14:59:03 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:45:41 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
-void	move_w(int keycode, t_data *data)
+static void	move_w(t_data *data)
 {
 	if (data->map[data->player_y - 1][data->player_x] != '1')
 	{
@@ -28,7 +28,7 @@ void	move_w(int keycode, t_data *data)
 	}
 }
 
-void	move_s(int keycode, t_data *data)
+static void	move_s(t_data *data)
 {
 	if (data->map[data->player_y + 1][data->player_x] != '1')
 	{
@@ -43,7 +43,7 @@ void	move_s(int keycode, t_data *data)
 	}
 }
 
-void	move_a(int keycode, t_data *data)
+static void	move_a(t_data *data)
 {
 	if (data->map[data->player_y][data->player_x - 1] != '1')
 	{
@@ -58,7 +58,7 @@ void	move_a(int keycode, t_data *data)
 	}
 }
 
-void	move_d(int keycode, t_data *data)
+static void	move_d(t_data *data)
 {
 	if (data->map[data->player_y][data->player_x + 1] != '1')
 	{
@@ -78,12 +78,12 @@ int	keyhook(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		close_game(data);
 	if (keycode == KEY_W || keycode == KEY_UP)
-		move_w(keycode, data);
+		move_w(data);
 	if (keycode == KEY_D || keycode == KEY_RIGHT)
-		move_d(keycode, data);
+		move_d(data);
 	if (keycode == KEY_S || keycode == KEY_DOWN)
-		move_s(keycode, data);
+		move_s(data);
 	if (keycode == KEY_A || keycode == KEY_LEFT)
-		move_a(keycode, data);
+		move_a(data);
 	return (0);
 }

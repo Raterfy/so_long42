@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:31:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/18 15:02:01 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 12:15:08 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,26 @@ void	init_img(t_data *data)
 			&img_height);
 }
 
-void	ft_set_item(t_data *data, t_pos pos)
+void	set_item(t_data *data, t_pos pos)
 {
 	if (data->map[pos.y][pos.x] == 'C')
 	{
-		if ((pos.y * pos.x) % 2 == 0)
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->berry, pos.x * 50, pos.y * 50);
-		else
-			mlx_put_image_to_window(data->mlx, data->mlx_win,
-				data->berry2, pos.x * 50, pos.y * 50);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->collectible,
+			pos.x * 50, pos.y * 50);
 	}
 	else if (data->map[pos.y][pos.x] == 'E')
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->exit, pos.x * 50, pos.y * 50);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->exit, pos.x
+			* 50, pos.y * 50);
 	else if (data->map[pos.y][pos.x] == 'P')
 	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->char_right, pos.x * 50, pos.y * 50);
-		data->p_x = pos.x;
-		data->p_y = pos.y;
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,
+			pos.x * 50, pos.y * 50);
+		data->player_x = pos.x;
+		data->player_y = pos.y;
 	}
 }
 
-void	ft_set_img(t_data *data)
+void	set_img(t_data *data)
 {
 	t_pos	pos;
 
@@ -63,13 +59,13 @@ void	ft_set_img(t_data *data)
 		while (data->map[pos.y][pos.x])
 		{
 			if (data->map[pos.y][pos.x] == '1')
-				mlx_put_image_to_window(data->mlx, data->mlx_win,
-					data->tree, pos.x * 50, pos.y * 50);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->wall,
+					pos.x * 50, pos.y * 50);
 			else
 			{
-				mlx_put_image_to_window(data->mlx, data->mlx_win,
-					data->ground, pos.x * 50, pos.y * 50);
-				ft_set_item(data, pos);
+				mlx_put_image_to_window(data->mlx, data->mlx_win, data->ground,
+					pos.x * 50, pos.y * 50);
+				set_item(data, pos);
 			}
 			pos.x++;
 		}
@@ -85,8 +81,8 @@ void	init_game(t_data *data)
 		free(data->mlx);
 		return ;
 	}
-	data->mlx_win = mlx_new_window(data->mlx, data->width * 50,
-			data->height * 50, "so_long");
+	data->mlx_win = mlx_new_window(data->mlx, data->width * 50, data->height
+			* 50, "so_long");
 	init_img(data);
 	set_img(data);
 	game(data);

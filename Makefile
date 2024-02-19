@@ -1,15 +1,15 @@
 NAME		=	so_long
-	
-SRCS		=	src/main.c \
-				src/move.c \
-				src/parsing.c \
-				src/utils.c \
-				src/clean_the_game.c \
+
+SRCS		=	src/clean_the_game.c \
 				src/game.c \
 				src/init.c \
+				src/main.c \
+				src/move.c \
+				src/parsing.c \
 				src/read_data_from_map.c \
-	
-CC			=	clang
+				src/utils.c \
+
+CC			=	cc
 	
 CFFLAGS		=	-Wall -Wextra -Werror -g3
 

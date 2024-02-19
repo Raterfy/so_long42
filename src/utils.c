@@ -6,11 +6,12 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:21:48 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/18 15:32:01 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:48:04 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+#include "../libft/includes/ft_printf.h"
 
 int	get_line_len(char *str)
 {

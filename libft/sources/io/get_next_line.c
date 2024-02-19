@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:27:43 by robhak            #+#    #+#             */
-/*   Updated: 2023/06/02 10:12:06 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:42:32 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*read_and_store(int fd, char *residual)
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read != 0 && !ft_strchr(residual, '\n'))
+	while (bytes_read != 0 && !ft_strchr_gnl(residual, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)

@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:10:46 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/14 17:35:15 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 17:04:39 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	map_stats(t_data *data)
 	while (data->map[y])
 	{
 		x = 0;
-		while (data->map[y][x])
+		while (data->map[y] && data->map[y][x])
 		{
 			if (data->map[y][x] == 'C')
 				data->count_c++;
@@ -49,7 +49,7 @@ void	map_stats(t_data *data)
 /*
  * Joins two map lines with a '/' separator.
  */
-char	*join_map_lines(char *s1, char *s2)
+char	*join_map_line(char *s1, char *s2)
 {
 	int		i;
 	int		size;
@@ -101,7 +101,7 @@ void	read_map_from_file(int fd, t_data *data)
 }
 
 /*
- * Reads the map from a file, calculates its stats, checks for errors, 
+ * Reads the map from a file, calculates its stats, checks for errors,
  * and returns the map.
  */
 char	**create_map(int fd, t_data *data)

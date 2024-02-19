@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 08:07:02 by robhak            #+#    #+#             */
-/*   Updated: 2023/06/04 20:48:50 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:51:31 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "./libft.h"
 
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *res, char *buffer);
+char	*ft_strchr_gnl(char *s, int c);
+char	*ft_strjoin_gnl(char *res, char *buffer);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*get_next_line(int fd);

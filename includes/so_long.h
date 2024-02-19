@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:18:00 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/18 15:26:31 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 16:54:40 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,20 @@ int			is_path_valid(t_data *data);
 int			map_error(t_data *data);
 int			is_ber_file(char *argv);
 // Utils
-void		check_item(t_map *map, int y, int x);
+void		check_item(t_data *data, int y, int x);
 void		set_ground(t_data *data, int y, int x);
 
 // Moves
 int			keyhook(int keycode, t_data *data);
-void		move_w(int keycode, t_data *data);
-void		move_s(int keycode, t_data *data);
-void		move_a(int keycode, t_data *data);
-void		move_d(int keycode, t_data *data);
 
-char		**map_cpy(char **map);
+// read_data_from_map
 char		**create_map(int fd, t_data *data);
+
+void		map_stats(t_data *data);
+char		*join_map_line(char *s1, char *s2);
+void		read_map_from_file(int fd, t_data *data);
+int			is_and_exit(t_data *data, int y, int x);
+void		init_game(t_data *data);
 void		game(t_data *data);
 void		free_map(t_data *data);
 void		check_number_of_collectible(t_data *data, int y, int x);
@@ -88,6 +90,5 @@ void		find_player(t_data *data);
 int			count_elements(t_data *data, char c);
 int			count_elements(t_data *data, char c);
 int			get_line_len(char *str);
-int			keyhook(int keycode, t_data *data);
 
 #endif

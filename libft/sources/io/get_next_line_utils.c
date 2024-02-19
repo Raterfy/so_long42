@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 08:07:19 by robhak            #+#    #+#             */
-/*   Updated: 2023/12/28 21:17:09 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:51:00 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr_gnl(char *s, int c)
 {
 	if (!s)
 		return (0);
@@ -53,7 +53,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-char	*ft_strjoin(char *res, char *buffer)
+char	*ft_strjoin_gnl(char *res, char *buffer)
 {
 	size_t	res_len;
 	size_t	buffer_len;

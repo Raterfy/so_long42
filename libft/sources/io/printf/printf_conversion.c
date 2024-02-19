@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:06:35 by robhak            #+#    #+#             */
-/*   Updated: 2023/05/27 12:21:34 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:56:43 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	print_c(va_list args)
 	int	cpt;
 
 	cpt = 0;
-	cpt += ft_putchar(va_arg(args, int));
+	cpt += ft_putchar_printf(va_arg(args, int));
 	return (cpt);
 }
 
@@ -41,9 +41,9 @@ size_t	print_s(va_list args)
 	cpt = 0;
 	str = va_arg(args, char *);
 	if (!str)
-		cpt = ft_putstr("(null)");
+		cpt = ft_putstr_printf("(null)");
 	else
-		cpt = ft_putstr(str);
+		cpt = ft_putstr_printf(str);
 	return (cpt);
 }
 
@@ -61,10 +61,10 @@ size_t	print_p(va_list args)
 	cpt = 0;
 	ptr = va_arg(args, void *);
 	if (!ptr)
-		cpt += ft_putstr("(nil)");
+		cpt += ft_putstr_printf("(nil)");
 	else
 	{
-		cpt += ft_putstr("0x");
+		cpt += ft_putstr_printf("0x");
 		cpt += ft_putnbr_base((unsigned long)ptr, "0123456789abcdef");
 	}
 	return (cpt);

@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:26:39 by robhak            #+#    #+#             */
-/*   Updated: 2023/10/10 21:34:44 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:53:24 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include "libft.h" 
 
-size_t	ft_putchar(char c);
-size_t	ft_putstr(char *str);
+size_t	ft_putchar_printf(char c);
+size_t	ft_putstr_printf(char *str);
 size_t	ft_putnbr(int n);
 size_t	ft_unsigned_nbr(unsigned long long int n);
 size_t	ft_putnbr_base(unsigned long long int n, char *base);

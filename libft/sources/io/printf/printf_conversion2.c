@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:07:15 by robhak            #+#    #+#             */
-/*   Updated: 2023/05/27 12:21:54 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/19 13:55:56 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ size_t	print_upper_x(va_list args)
  */
 size_t	print_percent(void)
 {
-	return (ft_putchar('%'));
+	return (ft_putchar_printf('%'));
 }
