@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:30:49 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/19 15:56:01 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/20 08:59:28 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int ac, char **av)
 {
 	int		fd;
 	t_data	data;
+	
 
 	if (validate_input(ac, av) == 1)
 		return (1);

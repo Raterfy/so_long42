@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:27:43 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/19 16:42:32 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/20 08:58:49 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*read_and_store(int fd, char *residual)
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
-		residual = ft_strjoin(residual, buffer);
+		residual = ft_strjoin_gnl(residual, buffer);
 	}
 	free(buffer);
 	return (residual);
