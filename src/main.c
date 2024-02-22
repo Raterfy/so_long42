@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:30:49 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/20 08:59:28 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/22 14:31:09 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int ac, char **av)
 	fd = open_file(av[1]);
 	if (fd == -1)
 		return (1);
+	
 	if (!create_map(fd, &data))
 	{
 		free_map(&data);

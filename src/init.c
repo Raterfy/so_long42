@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:31:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/19 12:15:08 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:49:05 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	init_img(t_data *data)
 	int	img_height;
 
 	data->player = mlx_xpm_file_to_image(data->mlx, "assets/fusee_up.xpm",
+			&img_width, &img_height);
+	data->player_down = mlx_xpm_file_to_image(data->mlx, "assets/fusee_bot.xpm",
+			&img_width, &img_height);
+	data->player_left = mlx_xpm_file_to_image(data->mlx, "assets/fusee_left.xpm",
+			&img_width, &img_height);
+	data->player_right = mlx_xpm_file_to_image(data->mlx, "assets/fusee_right.xpm",
+			&img_width, &img_height);
+	data->wall = mlx_xpm_file_to_image(data->mlx, "assets/asteroid.xpm",
 			&img_width, &img_height);
 	data->wall = mlx_xpm_file_to_image(data->mlx, "assets/asteroid.xpm",
 			&img_width, &img_height);

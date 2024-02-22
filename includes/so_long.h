@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:18:00 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/19 16:54:40 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/22 15:52:00 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ typedef struct s_data
 	void	*wall;
 	void	*ground;
 	void	*player;
+	void	*player_down;
+	void	*player_left;
+	void	*player_right;
 	void	*collectible;
 	char	**map;
 	int		width;
@@ -90,5 +93,6 @@ void		find_player(t_data *data);
 int			count_elements(t_data *data, char c);
 int			count_elements(t_data *data, char c);
 int			get_line_len(char *str);
+void		draw_character(int keycode, t_data *data);
 
 #endif

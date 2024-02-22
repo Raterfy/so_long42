@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:10:46 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/20 08:59:44 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/22 14:36:53 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	map_stats(t_data *data)
 	while (data->map[y])
 	{
 		x = 0;
-		while (data->map[y] && data->map[y][x])
+		while (data->map[y][x])
 		{
 			if (data->map[y][x] == 'C')
 				data->count_c++;
