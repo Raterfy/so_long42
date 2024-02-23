@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:31:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/22 15:49:05 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/23 10:42:47 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	init_img(t_data *data)
 			&img_width, &img_height);
 	data->player_down = mlx_xpm_file_to_image(data->mlx, "assets/fusee_bot.xpm",
 			&img_width, &img_height);
-	data->player_left = mlx_xpm_file_to_image(data->mlx, "assets/fusee_left.xpm",
-			&img_width, &img_height);
-	data->player_right = mlx_xpm_file_to_image(data->mlx, "assets/fusee_right.xpm",
-			&img_width, &img_height);
-	data->wall = mlx_xpm_file_to_image(data->mlx, "assets/asteroid.xpm",
-			&img_width, &img_height);
+	data->player_left = mlx_xpm_file_to_image(data->mlx,
+			"assets/fusee_left.xpm", &img_width, &img_height);
+	data->player_right = mlx_xpm_file_to_image(data->mlx,
+			"assets/fusee_right.xpm", &img_width, &img_height);
 	data->wall = mlx_xpm_file_to_image(data->mlx, "assets/asteroid.xpm",
 			&img_width, &img_height);
 	data->ground = mlx_xpm_file_to_image(data->mlx, "assets/vide.xpm",
@@ -49,8 +47,8 @@ void	set_item(t_data *data, t_pos pos)
 			* 50, pos.y * 50);
 	else if (data->map[pos.y][pos.x] == 'P')
 	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player,
-			pos.x * 50, pos.y * 50);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, data->player, pos.x
+			* 50, pos.y * 50);
 		data->player_x = pos.x;
 		data->player_y = pos.y;
 	}
@@ -79,6 +77,14 @@ void	set_img(t_data *data)
 		}
 		pos.y++;
 	}
+}
+
+void	game(t_data *data)
+{
+	data->get_c = 0;
+	data->count_moves = 0;
+	mlx_hook(data->mlx_win, 2, 1L << 0, keyhook, data);
+	mlx_hook(data->mlx_win, 17, 1L << 17, close_game, data);
 }
 
 void	init_game(t_data *data)

@@ -1,13 +1,13 @@
 NAME		=	so_long
 
 SRCS		=	src/clean_the_game.c \
-				src/game.c \
+				src/create_map.c \
 				src/init.c \
 				src/main.c \
 				src/move.c \
 				src/parsing.c \
-				src/read_data_from_map.c \
 				src/utils.c \
+				src/Is_there_valid_path.c \
 
 CC			=	cc
 	

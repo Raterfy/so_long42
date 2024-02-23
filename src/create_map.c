@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_data_from_map.c                               :+:      :+:    :+:   */
+/*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:10:46 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/22 14:36:53 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:13:20 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ void	map_stats(t_data *data)
 	data->count_c = 0;
 	data->count_e = 0;
 	data->height = 0;
-	data->width = get_line_len(data->map[y]);
-	while (data->map[y])
+	data->width = 0;
+	if (data->map == NULL)
+		return;
+	if (data->map[y])
+		data->width = get_line_len(data->map[y]);
+	while (data->map && data->map[y])
 	{
 		x = 0;
 		while (data->map[y][x])

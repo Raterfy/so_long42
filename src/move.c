@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 09:18:26 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/22 15:54:40 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/23 15:04:27 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 static void	move_w(int keycode, t_data *data)
 {
+	if (data->map[data->player_y - 1][data->player_x] == '1')
+		ft_putendl_fd("You can't go through the wall!", 1);
 	if (data->map[data->player_y - 1][data->player_x] != '1')
 	{
 		if (!is_and_exit(data, data->player_y - 1, data->player_x))
@@ -31,6 +33,8 @@ static void	move_w(int keycode, t_data *data)
 
 static void	move_s(int keycode, t_data *data)
 {
+	if (data->map[data->player_y + 1][data->player_x] == '1')
+		ft_putendl_fd("You can't go through the wall!", 1);
 	if (data->map[data->player_y + 1][data->player_x] != '1')
 	{
 		if (!is_and_exit(data, data->player_y + 1, data->player_x))
@@ -47,6 +51,8 @@ static void	move_s(int keycode, t_data *data)
 
 static void	move_a(int keycode, t_data *data)
 {
+	if (data->map[data->player_y][data->player_x - 1] == '1')
+		ft_putendl_fd("You can't go through the wall!", 1);
 	if (data->map[data->player_y][data->player_x - 1] != '1')
 	{
 		if (!is_and_exit(data, data->player_y, data->player_x - 1))
@@ -63,6 +69,8 @@ static void	move_a(int keycode, t_data *data)
 
 static void	move_d(int keycode, t_data *data)
 {
+	if (data->map[data->player_y][data->player_x + 1] == '1')
+		ft_putendl_fd("You can't go through the wall!", 1);
 	if (data->map[data->player_y][data->player_x + 1] != '1')
 	{
 		if (!is_and_exit(data, data->player_y, data->player_x + 1))

@@ -6,16 +6,31 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:26:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/19 16:35:40 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/23 19:18:13 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	free_map2(char **map, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
 void	free_map(t_data *data)
 {
 	int	i;
 
+	if (data->map == NULL)
+		return ;
 	i = 0;
 	while (data->map[i])
 	{
@@ -28,6 +43,9 @@ void	free_map(t_data *data)
 void	free_img(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->player);
+	mlx_destroy_image(data->mlx, data->player_down);
+	mlx_destroy_image(data->mlx, data->player_left);
+	mlx_destroy_image(data->mlx, data->player_right);
 	mlx_destroy_image(data->mlx, data->wall);
 	mlx_destroy_image(data->mlx, data->ground);
 	mlx_destroy_image(data->mlx, data->collectible);
