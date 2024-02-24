@@ -6,8 +6,11 @@ SRCS		=	src/clean_the_game.c \
 				src/main.c \
 				src/move.c \
 				src/parsing.c \
+				src/parsing_utils.c \
 				src/utils.c \
 				src/Is_there_valid_path.c \
+				src/is_there_valid_path_utils.c \
+				src/is_there_valid_path_utils2.c \
 
 CC			=	cc
 	

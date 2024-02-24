@@ -6,12 +6,22 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:10:46 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/23 19:13:20 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/24 11:04:17 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/get_next_line.h"
+
+void	update_map_stats(t_data *data, int y, int x)
+{
+	if (data->map[y][x] == 'C')
+		data->count_c++;
+	if (data->map[y][x] == 'E')
+		data->count_e++;
+	if (data->map[y][x] == 'P')
+		data->count_p++;
+}
 
 /*
  * Counts the number of 'P', 'C', 'E' characters and calculates
@@ -29,7 +39,7 @@ void	map_stats(t_data *data)
 	data->height = 0;
 	data->width = 0;
 	if (data->map == NULL)
-		return;
+		return ;
 	if (data->map[y])
 		data->width = get_line_len(data->map[y]);
 	while (data->map && data->map[y])
@@ -37,12 +47,7 @@ void	map_stats(t_data *data)
 		x = 0;
 		while (data->map[y][x])
 		{
-			if (data->map[y][x] == 'C')
-				data->count_c++;
-			if (data->map[y][x] == 'E')
-				data->count_e++;
-			if (data->map[y][x] == 'P')
-				data->count_p++;
+			update_map_stats(data, y, x);
 			x++;
 		}
 		data->height++;

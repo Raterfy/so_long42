@@ -6,11 +6,18 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:26:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/23 19:18:13 by robhak           ###   ########.fr       */
+/*   Updated: 2024/02/24 12:10:50 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	free_bfs_data(t_bfsdata *bfsdata)
+{
+	free_map2(bfsdata->map, bfsdata->map_height);
+	free(bfsdata->reachable_targets);
+	free(bfsdata);
+}
 
 void	free_map2(char **map, int height)
 {
