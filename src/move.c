@@ -6,13 +6,16 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 09:18:26 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:22:21 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:29:53 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Handles the player's movement upwards (W key).
+ */
 void	move_w(int keycode, t_data *data)
 {
 	if (data->map[data->player_y - 1][data->player_x] == '1')
@@ -31,6 +34,9 @@ void	move_w(int keycode, t_data *data)
 	draw_character(keycode, data);
 }
 
+/*
+ * Handles the player's movement downwards (S key).
+ */
 void	move_s(int keycode, t_data *data)
 {
 	if (data->map[data->player_y + 1][data->player_x] == '1')
@@ -49,6 +55,9 @@ void	move_s(int keycode, t_data *data)
 	draw_character(keycode, data);
 }
 
+/*
+ * Handles the player's movement to the left (A key).
+ */
 void	move_a(int keycode, t_data *data)
 {
 	if (data->map[data->player_y][data->player_x - 1] == '1')
@@ -66,6 +75,10 @@ void	move_a(int keycode, t_data *data)
 	}
 	draw_character(keycode, data);
 }
+
+/*
+ * Handles the player's movement to the right (D key).
+ */
 
 void	move_d(int keycode, t_data *data)
 {
@@ -85,6 +98,9 @@ void	move_d(int keycode, t_data *data)
 	draw_character(keycode, data);
 }
 
+/*
+ * Handles key press events, including movement and game exit.
+ */
 int	keyhook(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)

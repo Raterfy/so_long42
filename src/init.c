@@ -6,12 +6,15 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 13:31:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 10:17:30 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:28:17 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*
+ * Initializes the images used in the game.
+ */
 void	init_img(t_data *data)
 {
 	int	img_width;
@@ -35,6 +38,9 @@ void	init_img(t_data *data)
 			&img_height);
 }
 
+/*
+ * Sets the image for a specific item on the map.
+ */
 void	set_item(t_data *data, t_pos pos)
 {
 	if (data->map[pos.y][pos.x] == 'C')
@@ -54,6 +60,9 @@ void	set_item(t_data *data, t_pos pos)
 	}
 }
 
+/*
+ * Sets the images for all items on the map.
+ */
 void	set_img(t_data *data)
 {
 	t_pos	pos;
@@ -79,6 +88,9 @@ void	set_img(t_data *data)
 	}
 }
 
+/*
+ * Sets up the game, including key and close window hooks.
+ */
 void	game(t_data *data)
 {
 	data->get_c = 0;
@@ -87,6 +99,10 @@ void	game(t_data *data)
 	mlx_hook(data->mlx_win, 17, 1L << 17, close_game, data);
 }
 
+/*
+ * Initializes the game, including the window and images,
+	and starts the game loop.
+ */
 void	init_game(t_data *data)
 {
 	data->mlx = mlx_init();

@@ -6,13 +6,16 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:07:37 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:08:27 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:38:54 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Checks if the given file is a .ber file.
+ */
 int	is_ber_file(char *argv)
 {
 	int	i;
@@ -28,6 +31,9 @@ int	is_ber_file(char *argv)
 	return (0);
 }
 
+/*
+ * Checks if the map contains only valid characters.
+ */
 int	char_error(t_data *data)
 {
 	int	i;
@@ -50,6 +56,9 @@ int	char_error(t_data *data)
 	return (1);
 }
 
+/*
+ * Checks if the map contains the correct number of each entity.
+ */
 int	entity_error(t_data *data)
 {
 	if (data->count_p != 1)
@@ -70,6 +79,9 @@ int	entity_error(t_data *data)
 	return (1);
 }
 
+/*
+ * Checks if the map is a rectangle.
+ */
 int	is_rectangle(t_data *data, int len)
 {
 	int	i;
@@ -87,6 +99,9 @@ int	is_rectangle(t_data *data, int len)
 	return (1);
 }
 
+/*
+ * Checks if the map is surrounded by walls.
+ */
 int	wall_error(t_data *data, int len)
 {
 	int	i;

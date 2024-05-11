@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_there_valid_path._utils.c                       :+:      :+:    :+:   */
+/*   is_there_valid_path_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:09:32 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:14:56 by robhak           ###   ########.fr       */
+/*   Updated: 2024/04/09 14:47:35 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Creates a copy of the given map line.
+ */
 char	*copy_map_line(char *src, int width)
 {
 	int		i;
@@ -31,6 +34,9 @@ char	*copy_map_line(char *src, int width)
 	return (copy);
 }
 
+/*
+ * Creates a copy of the given map.
+ */
 char	**copy_map(t_data *data)
 {
 	int		i;
@@ -54,6 +60,9 @@ char	**copy_map(t_data *data)
 	return (copy);
 }
 
+/*
+ * Initializes the dimensions of the map and the player's position.
+ */
 void	initialize_map_dimensions(t_data *data)
 {
 	int	j;
@@ -82,6 +91,9 @@ void	initialize_map_dimensions(t_data *data)
 	}
 }
 
+/*
+ * Performs a breadth-first search on the map from the given position.
+ */
 void	bfs(int x, int y, t_bfsdata *data)
 {
 	if (x < 0 || y < 0 || x >= data->map_height || y >= data->map_width)
@@ -98,6 +110,9 @@ void	bfs(int x, int y, t_bfsdata *data)
 	bfs(x, y - 1, data);
 }
 
+/*
+ * Allocates and initializes a t_bfsdata structure.
+ */
 t_bfsdata	*init_bfs_data(t_data *data)
 {
 	t_bfsdata	*bfsdata;

@@ -6,13 +6,16 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:11:34 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:15:02 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:28:33 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Initializes the map data, including the start position and dimensions.
+ */
 void	initialize_map_data(t_data *data)
 {
 	int	i;
@@ -37,6 +40,9 @@ void	initialize_map_data(t_data *data)
 	data->map_width = j;
 }
 
+/*
+ * Performs a flood fill operation on the map, marking reachable cells.
+ */
 void	floodfill(int w, int l, char **map)
 {
 	map[w][l] = '1';
@@ -50,6 +56,9 @@ void	floodfill(int w, int l, char **map)
 		floodfill(w, l + 1, map);
 }
 
+/*
+ * Finds the player's position on the map.
+ */
 void	findplayer(int *pos, char **map)
 {
 	int	w;
@@ -73,6 +82,10 @@ void	findplayer(int *pos, char **map)
 	pos[1] = l;
 }
 
+/*
+ * Checks if there is a valid path from the player to all collectibles 
+ 	and the exit.
+*/
 int	check_path(t_data *data, char **copy)
 {
 	int	i;

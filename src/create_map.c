@@ -6,13 +6,16 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:10:46 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 11:04:17 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:24:03 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/get_next_line.h"
 
+/*
+ * Updates map statistics based on the character at map[y][x].
+ */
 void	update_map_stats(t_data *data, int y, int x)
 {
 	if (data->map[y][x] == 'C')

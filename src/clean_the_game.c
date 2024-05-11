@@ -6,12 +6,15 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:26:08 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:10:50 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:21:07 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/*
+ * Frees the memory allocated for the BFS data structure.
+ */
 void	free_bfs_data(t_bfsdata *bfsdata)
 {
 	free_map2(bfsdata->map, bfsdata->map_height);
@@ -19,6 +22,9 @@ void	free_bfs_data(t_bfsdata *bfsdata)
 	free(bfsdata);
 }
 
+/*
+ * Frees the memory allocated for a 2D map.
+ */
 void	free_map2(char **map, int height)
 {
 	int	i;
@@ -32,6 +38,9 @@ void	free_map2(char **map, int height)
 	free(map);
 }
 
+/*
+ * Frees the memory allocated for the map in the game data structure.
+ */
 void	free_map(t_data *data)
 {
 	int	i;
@@ -47,6 +56,9 @@ void	free_map(t_data *data)
 	free(data->map);
 }
 
+/*
+ * Destroys the images used in the game.
+ */
 void	free_img(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->player);
@@ -59,6 +71,9 @@ void	free_img(t_data *data)
 	mlx_destroy_image(data->mlx, data->exit);
 }
 
+/*
+ * Closes the game, freeing all allocated resources.
+ */
 int	close_game(t_data *data)
 {
 	free_map(data);

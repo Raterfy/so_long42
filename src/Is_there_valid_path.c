@@ -6,13 +6,17 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:52:24 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:12:14 by robhak           ###   ########.fr       */
+/*   Updated: 2024/04/09 14:29:59 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Checks if all collectibles in the map are reachable from 
+ * the player's position.
+ */
 int	is_map_solvable(t_data *data)
 {
 	t_bfsdata	*bfsdata;
@@ -28,6 +32,10 @@ int	is_map_solvable(t_data *data)
 	return (result);
 }
 
+/*
+ * Checks if a valid path exists from the player 
+ * to all collectibles and the exit.
+ */
 int	is_path_valid(t_data *data)
 {
 	int		pos[2];

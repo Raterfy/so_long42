@@ -6,13 +6,17 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:32:18 by robhak            #+#    #+#             */
-/*   Updated: 2024/02/24 12:08:39 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:34:22 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 #include "../libft/includes/ft_printf.h"
 
+/*
+ * Performs a series of checks on the map to ensure it is valid.
+ * Returns 1 if the map is valid, 0 otherwise.
+ */
 int	map_error_checks(t_data *data, int len)
 {
 	if (!char_error(data))
@@ -41,6 +45,11 @@ int	map_error_checks(t_data *data, int len)
 	return (1);
 }
 
+/*
+ * Checks if the map is not empty and then performs a
+   series of checks on the map to ensure it is valid.
+ * Returns 1 if the map is valid, 0 otherwise.
+ */
 int	map_error(t_data *data)
 {
 	int	len;
