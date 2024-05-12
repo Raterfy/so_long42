@@ -6,7 +6,7 @@
 /*   By: robhak <robhak@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 12:09:32 by robhak            #+#    #+#             */
-/*   Updated: 2024/04/09 14:47:35 by robhak           ###   ########.fr       */
+/*   Updated: 2024/05/12 11:49:36 by robhak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	initialize_map_dimensions(t_data *data)
 }
 
 /*
- * Performs a breadth-first search on the map from the given position.
+ * Performs a breadth-first search on the map from the given position 
+ * for collectible.
  */
 void	bfs(int x, int y, t_bfsdata *data)
 {

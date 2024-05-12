@@ -1,0 +1,47 @@
+La fonction mlx_hook est une fonction de la bibliothèque MiniLibX qui 
+permet de définir des fonctions de rappel (ou "callbacks") 
+qui seront appelées lorsqu'un certain événement se produit dans une fenêtre.
+
+Elle prend cinq arguments :
+
+Un pointeur vers la fenêtre pour laquelle l'événement est défini.
+Un entier qui spécifie le type d'événement.
+Un masque de bits qui spécifie quels événements sont concernés.
+Un pointeur vers la fonction de rappel qui sera appelée lorsque l'événement se produit.
+Un pointeur vers des données supplémentaires qui seront passées à la fonction de rappel.
+Dans votre code, mlx_hook est utilisé deux fois :
+
+mlx_hook(data->mlx_win, 2, 1L << 0, keyhook, data); : Cette ligne définit 
+une fonction de rappel pour l'événement de pression de touche (événement 2). 
+Lorsqu'une touche est pressée, la fonction keyhook est appelée avec le code 
+de la touche et le pointeur data comme arguments.
+
+mlx_hook(data->mlx_win, 17, 1L << 17, close_game, data); : Cette ligne définit 
+une fonction de rappel pour l'événement de fermeture de la fenêtre (événement 17).
+ Lorsque la fenêtre est fermée, la fonction close_game est appelée avec 
+ le pointeur data comme argument.
+
+#######################################################################################
+#######################################################################################
+#######################################################################################
+
+mlx_init et mlx_loop sont deux fonctions de la bibliothèque graphique MiniLibX.
+
+mlx_init: Cette fonction initialise la connexion avec le système graphique. 
+Elle renvoie un pointeur qui sera utilisé dans toutes les autres fonctions 
+de la bibliothèque. Si l'initialisation échoue, elle renvoie NULL.
+
+mlx_loop: Cette fonction lance la boucle d'événements. 
+Une fois cette fonction appelée, le programme attend 
+les événements (comme les pressions de touches ou les clics de souris) 
+et les traite en appelant les fonctions de rappel appropriées 
+que vous avez définies avec mlx_hook. Cette fonction ne renvoie jamais, 
+donc tout code après mlx_loop ne sera jamais exécuté.
+
+Dans votre fonction init_game, vous utilisez d'abord mlx_init pour initialiser 
+la connexion avec le système graphique, puis vous créez une nouvelle fenêtre avec mlx_new_window, initialisez et définissez les images avec init_img et set_img, démarrez le jeu avec game, et enfin lancez la boucle d'événements avec 
+mlx_loop
+
+#######################################################################################
+#######################################################################################
+#######################################################################################
